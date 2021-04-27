@@ -2,6 +2,7 @@
 
 # define LIBFT_H
 # include <stddef.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {
@@ -30,5 +31,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_memcmp(void *s1, const void *s2, size_t n);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
 #endif

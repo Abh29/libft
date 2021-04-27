@@ -1,4 +1,4 @@
-SRC = *.c
+SRC =	*.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -12,7 +12,7 @@ NAME = libft.a
 
 
 .c.o :	$(HEADER)
-	$(CC) $(FLGS) -c $(SRC) -I $(HEADER)
+	$(CC) $(FLGS) -c ${SRC} -I $(HEADER)
 
 all:	$(OBJ)
 	ar rc $(NAME) $(OBJ)
@@ -29,3 +29,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean .c.o 
+
+#&.c : &.o libft.a 
