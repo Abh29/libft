@@ -2,7 +2,7 @@
 
 int	ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
-		return ((unsigned char)(c - 32));
+	if (c >= 0x61 && c <= 0x7C)
+		return (c - 'a' + 'A');
 	return (c);
 }
