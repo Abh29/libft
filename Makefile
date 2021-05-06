@@ -35,16 +35,16 @@ NAMESO = libft.so
 	@echo "compiling ..."
 	$(CC) $(FLGS) -c $<
 
-all :$(NAME)	
+all :$(NAME)
 	
 $(NAME): $(OBJ)
 	@echo "linking ..."
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-bonus:	$(BOBJ) $(OBJ)
+bonus: $(BOBJ)
 	@echo "linking with bonus ..."
-	@ar rc $(NAME) $(OBJ) $(BOBJ)
+	@ar rc $(NAME) $(BOBJ)
 	@ranlib $(NAME)
 
 so:

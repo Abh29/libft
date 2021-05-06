@@ -45,4 +45,3 @@ int main()
 	printf("%d\n",ft_atoi(s));
 	printf("%d",atoi(s));
 }
-
