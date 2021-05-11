@@ -5,8 +5,6 @@ static int	ft_isspace(int c)
 	return (c == ' ' || (c > 8 && c < 14));
 }
 
-#include <stdio.h>
-
 int	ft_atoi(const char *str)
 {
 	int		sign;
