@@ -2,10 +2,10 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	void	*save;
+	unsigned char	*save;
 
 	save = b;
 	while (len--)
-		*(unsigned char *)b++ = (unsigned char) c;
-	return (save);
+		*save++ = c;
+	return (b);
 }

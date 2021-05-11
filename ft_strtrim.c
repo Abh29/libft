@@ -16,12 +16,14 @@ char        *ft_strtrim(char const *s1, char const *set)
     if (s1 == NULL || set == NULL)
         return (NULL);
     size = ft_strlen(s1);
+    if (ft_strlen(set) == 0 || size == 0)
+        return (ft_strdup((char *)s1));
     start = 0;
     while (ft_containchar(set, s1[start]))
         start++;
     while (start < size && ft_containchar(set, s1[size - 1]))
         size--;
     if (start < size)
-        return (ft_substr(s1, start, size - start));
-    return ("\0");
+        return (ft_substr((char *)s1, start, size - start));
+    return (ft_strdup(""));
 }
