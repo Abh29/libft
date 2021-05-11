@@ -5,12 +5,17 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*tmp;
 	t_list	*root;
 
+	if (lst == NULL)
+		return (NULL);
 	while (lst)
 	{
 		tmp = ft_lstnew(f(lst->content));
+		if (tmp == NULL)
+		{
+			ft_lstclear(&root, del);
+			return (NULL);	
+		}
 		ft_lstadd_front(&root, tmp);
-		if (root == NULL)
-			del(root);
 		lst = lst->next;
 	}
 	return (root);
