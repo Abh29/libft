@@ -21,7 +21,7 @@ int	ft_atoi(const char *str)
 		str++;
 		sign = -1;
 	}
-	if (*str == '+')
+	else if (*str == '+')
 		str++;
 	while (*str && ft_isdigit(*str))
 	{
@@ -31,17 +31,11 @@ int	ft_atoi(const char *str)
 		{
 			if(sign == 1)
 				return (-1);
+			if (out > 9223372036854775807L)
+            	return (0);
 			return (1);
 		}
 	}
 
 	return ((int)(out * sign));
-}
-
-int main()
-{
-	char *s = "99999999999999999999999999";
-
-	printf("%d\n",ft_atoi(s));
-	printf("%d",atoi(s));
 }

@@ -5,7 +5,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char	c1;
 	unsigned char	c2;
 
-	if (s1 == NULL && s2 == NULL)
+	if (n == 0)
 		return (0);
 	while (n--)
 	{
@@ -15,8 +15,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return (1);
 		if (c1 < c2)
 			return (-1);
-		if (*s1 == '\0' || *s2 == '\0')
+		if (c1 == '\0' || c2 == '\0')
 			break ;
 	}
-	return (0);
+	return (c1 - c2);
 }
