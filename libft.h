@@ -60,5 +60,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
 
 /** my bonuses **/
 void	ft_putptr_fd(void* ptr, int fd);
+char    ft_hex_digit(int nb);
+void    ft_putnbr_base_fd(int nb, const char *base, int fd);
+void    ft_putnbr_unsigned_fd(int nb, int fd);
 
 #endif
