@@ -69,5 +69,11 @@ void    ft_putnbr_fd_size(int n, int fd, size_t *size);
 void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size);
 void	ft_putptr_fd_size(void* ptr, int fd, size_t *size);
 void    ft_putstr_fd_size(char *s, int fd, size_t *size);
+void	ft_putlnbr_fd(long long n, int fd);
+void	ft_putlnbr_fd_size(long long n, int fd, size_t *fsize);
+void	ft_putdbl_fd(float f, int fd, size_t precision);
+void	ft_putdbl_fd_size(float f, int fd, size_t precision, size_t *fsize);
+
+
 
 #endif

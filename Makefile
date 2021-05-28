@@ -26,7 +26,9 @@ BSRC := ft_lstnew.c 	ft_lstadd_front.c 	ft_lstsize.c 	\
 		ft_format_str_bonus.c			ft_putchar_fd_size_bonus.c \
 		ft_putnbr_fd_size_bonus.c		ft_putnbr_base_fd_size_bonus.c\
 		ft_putptr_fd_size_bonus.c		ft_putnbr_unsigned_fd_size_bonus.c\
-		ft_putstr_fd_size_bonus.c \
+		ft_putstr_fd_size_bonus.c 		ft_putlnbr_fd_size_bonus.c \
+		ft_putlnbr_fd_bonus.c 			ft_putdbl_fd_size_bonus.c \
+		ft_putdbl_fd_bonus.c \
 
 
 
