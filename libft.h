@@ -63,5 +63,11 @@ void	ft_putptr_fd(void* ptr, int fd);
 char    ft_hex_digit(int nb);
 void    ft_putnbr_base_fd(int nb, const char *base, int fd);
 void    ft_putnbr_unsigned_fd(int nb, int fd);
+void    ft_putchar_fd_size(char c, int fd, size_t *size);
+void    ft_putnbr_base_fd_size(int nb, const char *base, int fd, size_t *size);
+void    ft_putnbr_fd_size(int n, int fd, size_t *size);
+void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size);
+void	ft_putptr_fd_size(void* ptr, int fd, size_t *size);
+void    ft_putstr_fd_size(char *s, int fd, size_t *size);
 
 #endif
