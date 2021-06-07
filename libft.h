@@ -18,11 +18,11 @@ typedef struct s_options
     size_t  width;
     char    filler;
     int     l_shift;
-    char     prefix;
+    char    *prefix;
 }               t_options;
 
 #define OPTIONS(s, p, w, f, l, pr) (const t_options){s, p, w, f, l, pr}
-#define NULLOPTION OPTIONS(0, 0, 0, 0, 0, 0)
+#define NULLOPTION OPTIONS(0, 0, 0, 0, 0, NULL)
 
 
 #define FT_MAX(a, b) (a > b ? a: b)
@@ -84,9 +84,9 @@ char    ft_hex_digit(int nb);
 void    ft_putnbr_base_fd(int nb, const char *base, int fd);
 void    ft_putnbr_unsigned_fd(int nb, int fd);
 void    ft_putchar_fd_size(char c, int fd, size_t *size);
-void    ft_putnbr_base_fd_size(int nb, const char *base, int fd, size_t *size);
+void    ft_putnbr_base_fd_size(int nb, const char *base, int fd, size_t *size, t_options options);
 void    ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options);
-void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size);
+void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size, t_options options);
 void	ft_putptr_fd_size(void* ptr, int fd, size_t *size, t_options options);
 void    ft_putstr_fd_size(char *s, int fd, size_t *size, t_options options);
 void	ft_putlnbr_fd(long long n, int fd);

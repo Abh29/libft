@@ -51,7 +51,7 @@ void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
         ft_putchar_fd_size('-', fd, size);
         while (width-- > 10)
             ft_putchar_fd_size('0', fd, size);
-        ft_putstr_fd_size("2147483648", fd, size);
+        ft_putstr_fd_size("2147483648", fd, size,  OPTIONS(0, INT_MAX, 0, 0, 0, NULL));
         return ;
     }
     if (n == 0)
