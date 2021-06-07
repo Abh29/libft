@@ -8,7 +8,7 @@ void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size)
     char *save;
 
     if (nb >= 0)
-        ft_putnbr_fd_size(nb, fd, size);
+        ft_putnbr_fd_size(nb, fd, size, NULLOPTION);
     else
     {
         buff = (char *)ft_calloc(12, sizeof(char));

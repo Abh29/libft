@@ -12,7 +12,7 @@ void ft_add_one_size(char *str, int idx)
     str[idx]++;
 }
 
-void ft_putdbl_fd_size(float f, int fd, size_t precision, size_t *fsize)
+void ft_putdbl_fd_size(double f, int fd, size_t precision, size_t *fsize)
 {
     int correctpart;
     int intpart;
@@ -20,10 +20,17 @@ void ft_putdbl_fd_size(float f, int fd, size_t precision, size_t *fsize)
     char *out;
     int idx;
     size_t j;
+    
 
+    
     out = (char *)calloc(100, sizeof(char));
     if (out == NULL)
         return ;
+    if (f < 0)
+    {
+        ft_putchar_fd_size('-', fd, fsize);
+        f *= -1;
+    }
     correctpart = (int)f;
     floatpart = f - ((double)correctpart);
     out[0] = '0';
@@ -50,11 +57,12 @@ void ft_putdbl_fd_size(float f, int fd, size_t precision, size_t *fsize)
         ft_add_one_size(out, idx - 1);
     if (out[0] == '1')
         correctpart++;
-    ft_putnbr_fd_size(correctpart, fd, fsize);
+    ft_putnbr_fd_size(correctpart, fd, fsize, NULLOPTION);
     if (precision != 0)
         ft_putchar_fd_size('.', fd, fsize);
     idx = 1;
     while (out[idx++])
         ft_putchar_fd_size(out[idx], fd, fsize);
     
+    free(out);
 }
