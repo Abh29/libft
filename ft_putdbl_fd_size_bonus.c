@@ -1,68 +1,77 @@
 #include "libft.h"
 
-void ft_add_one_size(char *str, int idx)
+double ft_pow10(int e)
 {
-    while (str[idx] == '9')
-    {
-        str[idx] = '0';
-        idx--;
-    }
-    if (str[idx] == '.')
-        idx--;
-    str[idx]++;
+    double out;
+
+    out = 1;
+    if (e < 0)
+        while (e++ < 0)
+            out /= 10;
+    else while (e-- > 0)
+        out *= 10;
+    return (out);
 }
 
-void ft_putdbl_fd_size(double f, int fd, size_t precision, size_t *fsize)
+void ft_putdbl_fd_size(long double dbl, int fd, size_t *size, t_options options)
 {
-    int correctpart;
-    int intpart;
+    int firstpart;
+    int secondpart;
     double floatpart;
-    char *out;
-    int idx;
-    size_t j;
+    t_options ops;
+    long double d;
     
-
-    
-    out = (char *)calloc(100, sizeof(char));
-    if (out == NULL)
-        return ;
-    if (f < 0)
+    d = dbl;
+    if (d < 0)
+        d *= -1;
+    firstpart = (int)d;
+    floatpart = d - (double)firstpart;
+    floatpart *= ft_pow10(options.precision);
+    secondpart = (int) floatpart;
+    floatpart -= secondpart;
+    if (floatpart > 0.5)
+        secondpart++;
+    if (secondpart > ft_pow10(options.precision) - 1)
     {
-        ft_putchar_fd_size('-', fd, fsize);
-        f *= -1;
+        firstpart++;
+        secondpart = 0;
     }
-    correctpart = (int)f;
-    floatpart = f - ((double)correctpart);
-    out[0] = '0';
-    idx = 1;
-    out[idx++] = '.';
-    floatpart *= 10;
-    j = 0;
-    intpart = (int)(floatpart);
-    while (floatpart != 0 && j < precision)
+    if (dbl < 0)
+        firstpart *= -1;
+    ops = options;
+    ops.precision = 0;
+    if (!options.l_shift)
     {
-        out[idx++] = intpart + '0';
-        floatpart = floatpart - ((double)intpart);
-        floatpart *= 10;
-        intpart = (int)(floatpart);
-        j++;
+        if (options.width > options.precision)
+            ops.width -= options.precision;
+        if (options.precision != 0 && options.width)
+            ops.width--;
+        if (options.filler)
+            ops.precision = ops.width;
+        if (dbl < 0 || options.sign)
+            ops.precision--;
+        if (firstpart == 0 && options.filler == 0)
+            ops.precision = 1;
+        options.width = 0;
     }
-    while (j < precision)
+    else
     {
-        out[idx++] = '0';
-        intpart = 0;
-        j++;
+        ops.width = 0;
+        if (firstpart == 0)
+        {
+            ops.precision = 1;
+            options.width--;
+        }
+        if (options.precision != 0 && options.width)
+            options.width--;
     }
-    if (intpart > 5)
-        ft_add_one_size(out, idx - 1);
-    if (out[0] == '1')
-        correctpart++;
-    ft_putnbr_fd_size(correctpart, fd, fsize, NULLOPTION);
-    if (precision != 0)
-        ft_putchar_fd_size('.', fd, fsize);
-    idx = 1;
-    while (out[idx++])
-        ft_putchar_fd_size(out[idx], fd, fsize);
-    
-    free(out);
+    ft_putnbr_fd_size(firstpart, fd, size, ops);
+    if (options.precision != 0)
+    {
+        ft_putchar_fd_size('.', fd, size);
+        options.sign = 0;
+        if (secondpart != 0)
+            options.precision = 0;
+        ft_putnbr_fd_size(secondpart, fd, size, options); 
+    }   
 }

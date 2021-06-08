@@ -21,6 +21,12 @@ typedef struct s_options
     char    *prefix;
 }               t_options;
 
+typedef union u_double
+{
+    double  dbl;
+    char    data[sizeof(double)];
+}               t_double;
+
 #define OPTIONS(s, p, w, f, l, pr) (const t_options){s, p, w, f, l, pr}
 #define NULLOPTION OPTIONS(0, 0, 0, 0, 0, NULL)
 
@@ -92,7 +98,7 @@ void    ft_putstr_fd_size(char *s, int fd, size_t *size, t_options options);
 void	ft_putlnbr_fd(long long n, int fd);
 void	ft_putlnbr_fd_size(long long n, int fd, size_t *fsize);
 void	ft_putdbl_fd(float f, int fd, size_t precision);
-void	ft_putdbl_fd_size(double f, int fd, size_t precision, size_t *fsize);
-
+void	ft_putdbl_fd_size(long double f, int fd, size_t *fsize, t_options options);
+void    ft_putdbl_exp_fd_size(double dbl, int fd, size_t *size, t_options options);
 
 #endif

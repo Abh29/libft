@@ -37,7 +37,7 @@ void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
     
     i = 0;
     width = 0;
-    if (options.sign)
+    if (options.sign && options.width > 0)
         options.width--;
     if (options.l_shift)
     {
