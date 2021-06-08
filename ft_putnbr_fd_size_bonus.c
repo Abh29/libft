@@ -1,6 +1,5 @@
 #include "libft.h"
 
-
 static int  ft_numsize(int *n, int fd, size_t *fsize, t_options options)
 {
     int size;
@@ -23,11 +22,12 @@ static int  ft_numsize(int *n, int fd, size_t *fsize, t_options options)
         ft_putchar_fd_size('-', fd, fsize);
     else if (options.sign)
         ft_putchar_fd_size('+', fd, fsize);
+    if (options.precision == (size_t)-1)
+        options.precision = 0;
     while (options.precision-- > (size_t)size)
         ft_putchar_fd_size('0', fd, fsize);
     return (size);
 }
-
 
 void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
 {
@@ -58,11 +58,11 @@ void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
     {
         while (options.width-- > FT_MAX(options.precision, (size_t)1))
             ft_putchar_fd_size(' ', fd, size);
-        if (options.sign && width-- > INT_MIN)
+        if (options.sign && width-- > 1)
             ft_putchar_fd_size('+', fd, size);
-        else if (options.precision == 0 && width-- > INT_MIN)
+        else if (options.precision == 0 && width-- > 1)
             ft_putchar_fd_size(' ', fd, size);
-        while (i < options.precision-- && width-- > INT_MIN)
+        while (i < options.precision-- && width-- > 1)
             ft_putchar_fd_size('0', fd, size);
     }
     else
