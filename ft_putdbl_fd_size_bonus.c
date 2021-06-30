@@ -1,5 +1,6 @@
 #include "libft.h"
 
+
 double ft_pow10(int e)
 {
     double out;
@@ -13,6 +14,16 @@ double ft_pow10(int e)
     return (out);
 }
 
+int ft_intsize(int n)
+{
+    int size;
+    
+    size = 1;
+    while (n / 10 > 0 && size++ > 0)
+        n /= 10;
+    return (size);
+}
+
 void ft_putdbl_fd_size(long double dbl, int fd, size_t *size, t_options options)
 {
     int firstpart;
@@ -20,7 +31,8 @@ void ft_putdbl_fd_size(long double dbl, int fd, size_t *size, t_options options)
     double floatpart;
     t_options ops;
     long double d;
-    
+    int sig_zeros;
+
     d = dbl;
     if (d < 0)
         d *= -1;
@@ -28,13 +40,18 @@ void ft_putdbl_fd_size(long double dbl, int fd, size_t *size, t_options options)
     floatpart = d - (double)firstpart;
     floatpart *= ft_pow10(options.precision);
     secondpart = (int) floatpart;
+    sig_zeros = options.precision - ft_intsize(secondpart);
     floatpart -= secondpart;
     if (floatpart > 0.5)
+    {
         secondpart++;
+        sig_zeros = options.precision - ft_intsize(secondpart);
+    }
     if (secondpart > ft_pow10(options.precision) - 1)
     {
         firstpart++;
         secondpart = 0;
+        sig_zeros = 0;
     }
     if (dbl < 0)
         firstpart *= -1;
@@ -72,6 +89,8 @@ void ft_putdbl_fd_size(long double dbl, int fd, size_t *size, t_options options)
         options.sign = 0;
         if (secondpart != 0)
             options.precision = 0;
+        while (sig_zeros--)
+            ft_putchar_fd_size('0', fd, size);
         ft_putnbr_fd_size(secondpart, fd, size, options); 
     }   
 }

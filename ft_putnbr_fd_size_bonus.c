@@ -12,6 +12,10 @@ static int  ft_numsize(int *n, int fd, size_t *fsize, t_options options)
     {
         *n *= -1;
         neg = 1;
+        if (options.width > 0)
+            options.width--;
+        if (options.precision > 0)
+            options.precision--;
     }
     save = *n;
     while (save && size++ > -1)
@@ -39,6 +43,14 @@ void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
     width = 0;
     if (options.sign && options.width > 0)
         options.width--;
+    if (options.filler == ' ' && n > 0)
+    {
+        ft_putchar_fd_size(' ', fd, size);
+        if (options.width > 0)
+            options.width--;
+    }
+    else if (options.filler == '0')
+        options.precision = FT_MAX(options.width, options.precision);
     if (options.l_shift)
     {
        width = options.width;

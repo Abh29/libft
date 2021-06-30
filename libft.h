@@ -100,5 +100,7 @@ void	ft_putlnbr_fd_size(long long n, int fd, size_t *fsize);
 void	ft_putdbl_fd(float f, int fd, size_t precision);
 void	ft_putdbl_fd_size(long double f, int fd, size_t *fsize, t_options options);
 void    ft_putdbl_exp_fd_size(double dbl, int fd, size_t *size, t_options options);
+void    ft_putchar_fd_size_options(char c, int fd, size_t *size, t_options options);
+
 
 #endif
