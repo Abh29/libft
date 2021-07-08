@@ -13,29 +13,28 @@ typedef struct s_list
 
 typedef struct s_options
 {
-    int     sign;
-    size_t  precision;
-    size_t  width;
-    char    filler;
-    int     l_shift;
-    char    *prefix;
-}               t_options;
+	int		sign;
+	size_t	precision;
+	size_t	width;
+	char	filler;
+	int		l_shift;
+	char	*prefix;
+}				t_options;
 
 typedef union u_double
 {
-    double  dbl;
-    char    data[sizeof(double)];
-}               t_double;
+	double	dbl;
+	char	data[sizeof(double)];
+}			t_double;
 
-#define OPTIONS(s, p, w, f, l, pr) (const t_options){s, p, w, f, l, pr}
-#define NULLOPTION OPTIONS(0, 0, 0, 0, 0, NULL)
+# define OPTIONS(s, p, w, f, l, pr) (const t_options){s, p, w, f, l, pr}
+# define NULLOPTION	OPTIONS(0, 0, 0, 0, 0, NULL)
 
+# define FT_MAX(a, b) (a > b ? a: b)
+# define FT_MIN(a, b) (a < b ? a: b)
 
-#define FT_MAX(a, b) (a > b ? a: b)
-#define FT_MIN(a, b) (a < b ? a: b)
-
-#define INT_MAX 2147483647
-#define INT_MIN -2147483648
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
@@ -61,10 +60,10 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 int		ft_memcmp(void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char    *ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-char 	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
@@ -80,27 +79,32 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void 	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /** my bonuses **/
-void	ft_putptr_fd(void* ptr, int fd);
-char    ft_hex_digit(int nb);
-void    ft_putnbr_base_fd(int nb, const char *base, int fd);
-void    ft_putnbr_unsigned_fd(int nb, int fd);
-void    ft_putchar_fd_size(char c, int fd, size_t *size);
-void    ft_putnbr_base_fd_size(int nb, const char *base, int fd, size_t *size, t_options options);
-void    ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options);
-void    ft_putnbr_unsigned_fd_size(int nb, int fd, size_t *size, t_options options);
-void	ft_putptr_fd_size(void* ptr, int fd, size_t *size, t_options options);
-void    ft_putstr_fd_size(char *s, int fd, size_t *size, t_options options);
+void	ft_putptr_fd(void *ptr, int fd);
+char	ft_hex_digit(int nb);
+void	ft_putnbr_base_fd(int nb, const char *base, int fd);
+void	ft_putnbr_unsigned_fd(int nb, int fd);
+void	ft_putchar_fd_size(char c, int fd, size_t *size);
+void	ft_putnbr_base_fd_size(int nb, const char *base, \
+		int fd, size_t *size, t_options options);
+void	ft_putnbr_fd_size(int n, int fd, \
+		size_t *size, t_options options);
+void	ft_putnbr_unsigned_fd_size(int nb, int fd, \
+		size_t *size, t_options options);
+void	ft_putptr_fd_size(void *ptr, int fd, size_t *size, t_options options);
+void	ft_putstr_fd_size(char *s, int fd, size_t *size, t_options options);
 void	ft_putlnbr_fd(long long n, int fd);
 void	ft_putlnbr_fd_size(long long n, int fd, size_t *fsize);
 void	ft_putdbl_fd(float f, int fd, size_t precision);
-void	ft_putdbl_fd_size(long double f, int fd, size_t *fsize, t_options options);
-void    ft_putdbl_exp_fd_size(double dbl, int fd, size_t *size, t_options options);
-void    ft_putchar_fd_size_options(char c, int fd, size_t *size, t_options options);
-
+void	ft_putdbl_fd_size(long double f, int fd, \
+		size_t *fsize, t_options options);
+void	ft_putdbl_exp_fd_size(double dbl, int fd, \
+		size_t *size, t_options options);
+void	ft_putchar_fd_size_options(char c, int fd, \
+		size_t *size, t_options options);
 
 #endif
