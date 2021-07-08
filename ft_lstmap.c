@@ -13,7 +13,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (tmp == NULL)
 		{
 			ft_lstclear(&root, del);
-			return (NULL);	
+			return (NULL);
 		}
 		ft_lstadd_front(&root, tmp);
 		lst = lst->next;

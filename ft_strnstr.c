@@ -2,9 +2,9 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t 	size;
+	size_t	size;
 	char	*s1;
-	char	*s2; 
+	char	*s2;
 
 	if (ft_strlen(needle) == 0)
 		return ((char *)haystack);

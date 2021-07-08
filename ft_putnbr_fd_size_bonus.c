@@ -76,6 +76,7 @@ void        ft_putnbr_fd_size(int n, int fd, size_t *size, t_options options)
             ft_putchar_fd_size(' ', fd, size);
         while (i < options.precision-- && width-- > 1)
             ft_putchar_fd_size('0', fd, size);
+		ft_putchar_fd_size('0', fd, size);
     }
     else
     {
